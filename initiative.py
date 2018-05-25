@@ -6,16 +6,44 @@ players = []
 initiatives = []
 flag = True
 final = {}
+choice = ""
+while True:
+	print "Read from file y/n ? "
+	choice = raw_input()
+	if choice == "y" or choice == "n":
+		break
+	else:
+		print "Invalid input, try again."
 
-print "Give me number of players: "
-n = int(raw_input())
+if choice == "n":
+	print "Give me number of players: "
+	n = int(raw_input())
 
-for i in range(n):
-	print "Give me name of player: "
-	players.append(raw_input())
-	print "Give me his init bonus"
-	initiatives.append(int(raw_input()))
+	for i in range(n):
+		print "Give me name of player: "
+		players.append(raw_input())
+		print "Give me his init bonus"
+		initiatives.append(int(raw_input()))
+else:
+	filename = raw_input("Give me name of file: ")
+	filestring = ""
+	try:
+		with open(filename) as filein:
+			lista = []
+			for line in filein:
+				filestring += line.replace("\n"," ")
+			lista = filestring.split(" ")
+			index = 0
+			for item in lista:
+				if index%2 == 0:
+					players.append(item)
+				else:
+					initiatives.append(int(item))
+				index += 1
 
+
+	except IOError:
+		print "File doesnt exist. Try again..."
 
 
 while True:
