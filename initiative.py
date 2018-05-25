@@ -28,9 +28,12 @@ while True:
 	choice = raw_input()
 	if choice == "0":
 		sys.exit()
-	else:
+	elif choice == "1":
 		print "give me number of dm creatures: "
-		n = int(raw_input())
+		try:
+			n = int(raw_input())
+		except ValueError:
+			continue
 		for init in initiatives:
 			rng = random.SystemRandom()
 			initiatives2.append(init+rng.randint(1,20))
@@ -45,8 +48,10 @@ while True:
 		final = zip(players2, initiatives2)
 		final = dict(final)
 		print final
-		for key, value in sorted(final.iteritems(), key = lambda(k,v): (v,k)):
+		for key, value in reversed(sorted(final.iteritems(), key = lambda(k,v): (v,k))):
 			print str(key)+" "+str(value)
+	else:
+		continue
 
 
 
