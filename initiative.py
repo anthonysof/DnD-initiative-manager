@@ -40,7 +40,7 @@ else:
 				else:
 					initiatives.append(int(item))
 				index += 1
-
+		f.close()
 
 	except IOError:
 		print "File doesnt exist. Try again..."
