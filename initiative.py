@@ -1,3 +1,4 @@
+import random
 from random import randint
 import sys
 
@@ -31,7 +32,8 @@ while True:
 		print "give me number of dm creatures: "
 		n = int(raw_input())
 		for init in initiatives:
-			initiatives2.append(init+randint(1,20))
+			rng = random.SystemRandom()
+			initiatives2.append(init+rng.randint(1,20))
 
 		for i in range(n):
 			print "give me dm: "
